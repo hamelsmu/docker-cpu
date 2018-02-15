@@ -27,10 +27,6 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
 ENV PATH /opt/conda/bin:$PATH
 ##################
 
-# Install Pytorch Instructions at http://pytorch.org/
-RUN conda install -y pytorch torchvision -c pytorch
-RUN conda install -y opencv
-
 # Install Python packages
 RUN pip --no-cache-dir install --upgrade \
         altair \
@@ -47,7 +43,6 @@ RUN pip --no-cache-dir install --upgrade \
         jupyter_contrib_nbextensions \
         jupyterthemes \
         tensorflow \
-        keras \
         ktext \
         more_itertools \
         pandas_summary \
@@ -56,7 +51,6 @@ RUN pip --no-cache-dir install --upgrade \
         spacy \
         sklearn_pandas \
         textacy \
-        torchtext \
         tqdm \
         wget
 
