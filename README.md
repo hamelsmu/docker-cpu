@@ -8,7 +8,7 @@ For **CPU** Bound ML Research
 ### Docker image for machine learning on CPUs
 
 This image is built to run on CPU-only compute, which you may want to do if you need high CPU density.
-For example, I use this image on AWS [X1 instance types](https://aws.amazon.com/ec2/instance-types/x1/)
+For example, I use usually use [X1 instance types](https://aws.amazon.com/ec2/instance-types/x1/) on AWS.
 
 
 ### Useful commands to remember:
