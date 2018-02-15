@@ -1,39 +1,28 @@
-FROM tensorflow/tensorflow:latest-py3
+FROM continuumio/anaconda3
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
+    build-essential \
     byobu \
+    gcc \
     git-core git \
     htop \
     libglib2.0-0 \
     libxext6 \
     libsm6 \
     libxrender1 \
-    libcupti-dev \
     && \
 apt-get clean && \
 rm -rf /var/lib/apt/lists/*
 
-#################### Install Anaconda
-# Why Anaconda?  Its recommended Package Manager For PyTorch
-# The following section is from https://hub.docker.com/r/continuumio/anaconda3/~/dockerfile/
-# You may have to check this periodically and update
-
-RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
-    wget --quiet https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh -O ~/anaconda.sh && \
-    /bin/bash ~/anaconda.sh -b -p /opt/conda && \
-    rm ~/anaconda.sh
-
 ENV PATH /opt/conda/bin:$PATH
-##################
+
+RUN conda install -y -c conda-forge bcolz keras tensorflow python-annoy
+RUN conda install -y dask
 
 # Install Python packages
 RUN pip --no-cache-dir install --upgrade \
         altair \
-        annoy \
-        bcolz \
-        dask \
-        fastai \
         gensim \
         graphviz \
         h5py \
@@ -41,16 +30,11 @@ RUN pip --no-cache-dir install --upgrade \
         isoweek \
         jsonpath_rw_ext \
         jupyter_contrib_nbextensions \
-        jupyterthemes \
-        tensorflow \
         ktext \
         more_itertools \
-        pandas_summary \
-        Pillow \
         pyhive \
         spacy \
         sklearn_pandas \
-        textacy \
         tqdm \
         wget
 
