@@ -17,6 +17,7 @@ rm -rf /var/lib/apt/lists/*
 
 ENV PATH /opt/conda/bin:$PATH
 
+RUN conda update -n base conda
 RUN conda install -y -c conda-forge bcolz keras tensorflow python-annoy
 RUN conda install -y dask
 
