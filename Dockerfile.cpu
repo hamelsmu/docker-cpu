@@ -18,12 +18,14 @@ rm -rf /var/lib/apt/lists/*
 ENV PATH /opt/conda/bin:$PATH
 
 RUN conda update -n base conda
-RUN conda install -y -c conda-forge bcolz keras tensorflow python-annoy
+RUN conda install -y -c conda-forge bcolz keras
+RUN conda install pytorch-cpu torchvision-cpu -c pytorch
 RUN conda install -y dask
 
 # Install Python packages
 RUN pip --no-cache-dir install --upgrade \
         altair \
+        fastai \
         gensim \
         graphviz \
         h5py \
@@ -33,9 +35,11 @@ RUN pip --no-cache-dir install --upgrade \
         jupyter_contrib_nbextensions \
         ktext \
         more_itertools \
+        nmslib \
         pyhive \
         spacy \
         sklearn_pandas \
+        tensorflow-hub \
         tqdm \
         wget
 
