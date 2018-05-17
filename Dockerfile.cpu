@@ -36,6 +36,7 @@ RUN pip --no-cache-dir install --upgrade \
         ktext \
         more_itertools \
         nmslib \
+        opencv-python \
         pyhive \
         spacy \
         sklearn_pandas \
